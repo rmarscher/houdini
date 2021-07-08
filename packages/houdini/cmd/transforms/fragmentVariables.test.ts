@@ -77,7 +77,9 @@ test('pass argument values to generated fragments', async function () {
 		                }
 		            }
 		        }
-		    }
+		    },
+
+		    maskedSelection: {}
 		};
 	`)
 })
@@ -149,7 +151,9 @@ test("fragment arguments with default values don't rename the fragment", async f
 		                }
 		            }
 		        }
-		    }
+		    },
+
+		    maskedSelection: {}
 		};
 	`)
 })
@@ -235,6 +239,8 @@ test('thread query variables to inner fragments', async function () {
 		            }
 		        }
 		    },
+
+		    maskedSelection: {},
 
 		    input: {
 		        "fields": {
@@ -327,7 +333,9 @@ test('inner fragment with intermediate default value', async function () {
 		                }
 		            }
 		        }
-		    }
+		    },
+
+		    maskedSelection: {}
 		};
 	`)
 })
@@ -412,7 +420,9 @@ test("default values don't overwrite unless explicitly passed", async function (
 		                }
 		            }
 		        }
-		    }
+		    },
+
+		    maskedSelection: {}
 		};
 	`)
 })
@@ -484,7 +494,9 @@ test('default arguments', async function () {
 		                }
 		            }
 		        }
-		    }
+		    },
+
+		    maskedSelection: {}
 		};
 	`)
 })
@@ -556,7 +568,9 @@ test('multiple with directives - no overlap', async function () {
 		                }
 		            }
 		        }
-		    }
+		    },
+
+		    maskedSelection: {}
 		};
 	`)
 })

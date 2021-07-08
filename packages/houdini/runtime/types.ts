@@ -22,6 +22,7 @@ export type DocumentArtifact =
 
 export type QueryArtifact = BaseCompiledDocument & {
 	kind: 'HoudiniQuery'
+	maskedSelection: SubscriptionSelection
 }
 
 export type MutationArtifact = BaseCompiledDocument & {

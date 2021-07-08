@@ -11,6 +11,7 @@ import { marshalInputs, unmarshalSelection } from './scalars'
 
 // @ts-ignore: this file will get generated and does not exist in the source code
 import { getSession, goTo } from './adapter.mjs'
+import { rootID } from './cache/cache'
 
 export default function query<_Query extends Operation<any, any>>(
 	document: GraphQLTagResult
@@ -45,7 +46,7 @@ export default function query<_Query extends Operation<any, any>>(
 	// pull out the writer for internal use
 	let subscriptionSpec: SubscriptionSpec | null = {
 		rootType: artifact.rootType,
-		selection: artifact.selection,
+		selection: artifact.maskedSelection,
 		variables: () => variables,
 		set: store.set,
 	}
@@ -70,7 +71,7 @@ export default function query<_Query extends Operation<any, any>>(
 		cache.unsubscribe(
 			{
 				rootType: artifact.rootType,
-				selection: artifact.selection,
+				selection: artifact.maskedSelection,
 				set: store.set,
 				variables: () => variables,
 			},
@@ -91,11 +92,17 @@ export default function query<_Query extends Operation<any, any>>(
 		// save the new variables
 		variables = newVariables || {}
 
-		// update the local store
-		store.set(unmarshalSelection(config, artifact.selection, newData.data))
-
 		// write the data we received
 		cache.write(artifact.selection, newData.data, variables)
+
+		// update the local store
+		store.set(
+			cache.internal.getData(
+				cache.internal.record(rootID),
+				artifact.maskedSelection,
+				variables
+			)
+		)
 	}
 
 	return {

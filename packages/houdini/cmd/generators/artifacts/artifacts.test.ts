@@ -63,6 +63,13 @@ test('adds kind, name, and raw, response, and selection', async function () {
 		            "type": "Int",
 		            "keyRaw": "version"
 		        }
+		    },
+
+		    maskedSelection: {
+		        "version": {
+		            "type": "Int",
+		            "keyRaw": "version"
+		        }
 		    }
 		};
 	`)
@@ -151,6 +158,13 @@ test('selection includes fragments', async function () {
 		                }
 		            }
 		        }
+		    },
+
+		    maskedSelection: {
+		        "user": {
+		            "type": "User",
+		            "keyRaw": "user"
+		        }
 		    }
 		};
 	`)
@@ -235,6 +249,13 @@ test('internal directives are scrubbed', async function () {
 		                }
 		            }
 		        }
+		    },
+
+		    maskedSelection: {
+		        "user": {
+		            "type": "User",
+		            "keyRaw": "user"
+		        }
 		    }
 		};
 	`)
@@ -278,6 +299,20 @@ test('overlapping query and fragment selection', async function () {
 		    rootType: "Query",
 
 		    selection: {
+		        "user": {
+		            "type": "User",
+		            "keyRaw": "user",
+
+		            "fields": {
+		                "firstName": {
+		                    "type": "String",
+		                    "keyRaw": "firstName"
+		                }
+		            }
+		        }
+		    },
+
+		    maskedSelection: {
 		        "user": {
 		            "type": "User",
 		            "keyRaw": "user",
@@ -357,6 +392,27 @@ test('overlapping query and fragment nested selection', async function () {
 		                        "id": {
 		                            "type": "ID",
 		                            "keyRaw": "id"
+		                        }
+		                    }
+		                }
+		            }
+		        }
+		    },
+
+		    maskedSelection: {
+		        "user": {
+		            "type": "User",
+		            "keyRaw": "user",
+
+		            "fields": {
+		                "friends": {
+		                    "type": "User",
+		                    "keyRaw": "friends",
+
+		                    "fields": {
+		                        "firstName": {
+		                            "type": "String",
+		                            "keyRaw": "firstName"
 		                        }
 		                    }
 		                }
@@ -461,6 +517,44 @@ test('selections with interfaces', async function () {
 
 		            "abstract": true
 		        }
+		    },
+
+		    maskedSelection: {
+		        "friends": {
+		            "type": "Friend",
+		            "keyRaw": "friends",
+
+		            "fields": {
+		                "id": {
+		                    "type": "ID",
+		                    "keyRaw": "id"
+		                },
+
+		                "owner": {
+		                    "type": "User",
+		                    "keyRaw": "owner",
+
+		                    "fields": {
+		                        "firstName": {
+		                            "type": "String",
+		                            "keyRaw": "firstName"
+		                        }
+		                    }
+		                },
+
+		                "name": {
+		                    "type": "String",
+		                    "keyRaw": "name"
+		                },
+
+		                "__typename": {
+		                    "type": "String",
+		                    "keyRaw": "__typename"
+		                }
+		            },
+
+		            "abstract": true
+		        }
 		    }
 		};
 	`)
@@ -525,6 +619,44 @@ test('selections with unions', async function () {
 		    rootType: "Query",
 
 		    selection: {
+		        "entities": {
+		            "type": "Entity",
+		            "keyRaw": "entities",
+
+		            "fields": {
+		                "id": {
+		                    "type": "ID",
+		                    "keyRaw": "id"
+		                },
+
+		                "owner": {
+		                    "type": "User",
+		                    "keyRaw": "owner",
+
+		                    "fields": {
+		                        "firstName": {
+		                            "type": "String",
+		                            "keyRaw": "firstName"
+		                        }
+		                    }
+		                },
+
+		                "name": {
+		                    "type": "String",
+		                    "keyRaw": "name"
+		                },
+
+		                "__typename": {
+		                    "type": "String",
+		                    "keyRaw": "__typename"
+		                }
+		            },
+
+		            "abstract": true
+		        }
+		    },
+
+		    maskedSelection: {
 		        "entities": {
 		            "type": "Entity",
 		            "keyRaw": "entities",
@@ -1841,6 +1973,44 @@ describe('mutation artifacts', function () {
 		        }
 		    },
 
+		    maskedSelection: {
+		        "users": {
+		            "type": "User",
+		            "keyRaw": "users(stringValue: $value, boolValue: true, floatValue: 1.2, intValue: 1)",
+
+		            "fields": {
+		                "firstName": {
+		                    "type": "String",
+		                    "keyRaw": "firstName"
+		                }
+		            },
+
+		            "list": "All_Users",
+
+		            "filters": {
+		                "stringValue": {
+		                    "kind": "Variable",
+		                    "value": "value"
+		                },
+
+		                "boolValue": {
+		                    "kind": "Boolean",
+		                    "value": true
+		                },
+
+		                "floatValue": {
+		                    "kind": "Float",
+		                    "value": 1.2
+		                },
+
+		                "intValue": {
+		                    "kind": "Int",
+		                    "value": 1
+		                }
+		            }
+		        }
+		    },
+
 		    input: {
 		        "fields": {
 		            "value": "String"
@@ -2021,6 +2191,29 @@ describe('mutation artifacts', function () {
 		                }
 		            }
 		        }
+		    },
+
+		    maskedSelection: {
+		        "users": {
+		            "type": "User",
+		            "keyRaw": "users(stringValue: \\"foo\\")",
+
+		            "fields": {
+		                "firstName": {
+		                    "type": "String",
+		                    "keyRaw": "firstName"
+		                }
+		            },
+
+		            "list": "All_Users",
+
+		            "filters": {
+		                "stringValue": {
+		                    "kind": "String",
+		                    "value": "foo"
+		                }
+		            }
+		        }
 		    }
 		};
 	`)
@@ -2072,6 +2265,44 @@ describe('mutation artifacts', function () {
 		    rootType: "Query",
 
 		    selection: {
+		        "users": {
+		            "type": "User",
+		            "keyRaw": "users(stringValue: $value, boolValue: true, floatValue: 1.2, intValue: 1)",
+
+		            "fields": {
+		                "firstName": {
+		                    "type": "String",
+		                    "keyRaw": "firstName"
+		                }
+		            },
+
+		            "list": "All_Users",
+
+		            "filters": {
+		                "stringValue": {
+		                    "kind": "Variable",
+		                    "value": "value"
+		                },
+
+		                "boolValue": {
+		                    "kind": "Boolean",
+		                    "value": true
+		                },
+
+		                "floatValue": {
+		                    "kind": "Float",
+		                    "value": 1.2
+		                },
+
+		                "intValue": {
+		                    "kind": "Int",
+		                    "value": 1
+		                }
+		            }
+		        }
+		    },
+
+		    maskedSelection: {
 		        "users": {
 		            "type": "User",
 		            "keyRaw": "users(stringValue: $value, boolValue: true, floatValue: 1.2, intValue: 1)",
@@ -2205,6 +2436,44 @@ describe('mutation artifacts', function () {
 		        }
 		    },
 
+		    maskedSelection: {
+		        "users": {
+		            "type": "User",
+		            "keyRaw": "users(stringValue: $value, boolValue: true, floatValue: 1.2, intValue: 1)",
+
+		            "fields": {
+		                "firstName": {
+		                    "type": "String",
+		                    "keyRaw": "firstName"
+		                }
+		            },
+
+		            "list": "All_Users",
+
+		            "filters": {
+		                "stringValue": {
+		                    "kind": "Variable",
+		                    "value": "value"
+		                },
+
+		                "boolValue": {
+		                    "kind": "Boolean",
+		                    "value": true
+		                },
+
+		                "floatValue": {
+		                    "kind": "Float",
+		                    "value": 1.2
+		                },
+
+		                "intValue": {
+		                    "kind": "Int",
+		                    "value": 1
+		                }
+		            }
+		        }
+		    },
+
 		    input: {
 		        "fields": {
 		            "value": "String"
@@ -2274,6 +2543,20 @@ test('custom scalar shows up in artifact', async function () {
 		    rootType: "Query",
 
 		    selection: {
+		        "allItems": {
+		            "type": "TodoItem",
+		            "keyRaw": "allItems",
+
+		            "fields": {
+		                "createdAt": {
+		                    "type": "DateTime",
+		                    "keyRaw": "createdAt"
+		                }
+		            }
+		        }
+		    },
+
+		    maskedSelection: {
 		        "allItems": {
 		            "type": "TodoItem",
 		            "keyRaw": "allItems",
@@ -2374,6 +2657,20 @@ test('operation inputs', async function () {
 		    rootType: "Query",
 
 		    selection: {
+		        "user": {
+		            "type": "User",
+		            "keyRaw": "user(id: $id, filter: $filter, filterList: $filterList, enumArg: $enumArg)",
+
+		            "fields": {
+		                "id": {
+		                    "type": "ID",
+		                    "keyRaw": "id"
+		                }
+		            }
+		        }
+		    },
+
+		    maskedSelection: {
 		        "user": {
 		            "type": "User",
 		            "keyRaw": "user(id: $id, filter: $filter, filterList: $filterList, enumArg: $enumArg)",
