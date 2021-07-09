@@ -16,6 +16,7 @@ export default function selection({
 	path = [],
 	includeFragments,
 	document,
+	masked = false,
 }: {
 	config: Config
 	rootType: string
@@ -24,6 +25,7 @@ export default function selection({
 	path?: string[]
 	includeFragments: boolean
 	document: graphql.DocumentNode
+	masked?: boolean
 }): namedTypes.ObjectExpression {
 	// we need to build up an object that contains every field in the selection
 	const object = AST.objectExpression([])
@@ -47,14 +49,13 @@ export default function selection({
 				path,
 				includeFragments,
 				document,
+				masked: true,
 			})
-			for (const property of fragmentFields.properties) {
-				object.properties.push(
-					...fragmentFields.properties.filter(
-						(prop) => prop.type === 'ObjectProperty' && prop.key
-					)
+			object.properties.push(
+				...fragmentFields.properties.filter(
+					(prop) => prop.type === 'ObjectProperty' && prop.key
 				)
-			}
+			)
 		}
 		// inline fragments should be merged with the parent
 		else if (field.kind === 'InlineFragment') {
@@ -66,6 +67,7 @@ export default function selection({
 				path,
 				includeFragments,
 				document,
+				masked,
 			})
 			for (const property of inlineFragment.properties) {
 				object.properties.push(property)
@@ -96,6 +98,7 @@ export default function selection({
 			const fieldObj = AST.objectExpression([
 				AST.objectProperty(AST.literal('type'), AST.stringLiteral(typeName)),
 				AST.objectProperty(AST.literal('keyRaw'), AST.stringLiteral(fieldKey(field))),
+				AST.objectProperty(AST.literal('masked'), AST.booleanLiteral(masked)),
 			])
 
 			// is there an operation for this field
@@ -128,6 +131,7 @@ export default function selection({
 					path: pathSoFar,
 					includeFragments,
 					document,
+					masked,
 				})
 				fieldObj.properties.push(AST.objectProperty(AST.literal('fields'), selectionObj))
 			}
@@ -291,7 +295,7 @@ function mergeSelections(
 			.filter(Boolean)[0] as namedTypes.ObjectProperty
 
 		const abstractFlags = properties
-			.map(
+			.map<boolean>(
 				(property) =>
 					(property.value as namedTypes.ObjectExpression).properties.find(
 						(prop) =>
@@ -303,11 +307,25 @@ function mergeSelections(
 			)
 			.filter(Boolean)
 
+		const maskedFlags = properties
+			.map<boolean>(
+				(property) =>
+					(property.value as namedTypes.ObjectExpression).properties.find(
+						(prop) =>
+							prop.type === 'ObjectProperty' &&
+							prop.key.type === 'StringLiteral' &&
+							prop.key.value === 'masked'
+						// @ts-ignore
+					)?.value.value
+			)
+			.filter(Boolean)
+
 		// look at the first one in the list to check type
 		const typeProperty = types[0]
 		const key = keys[0]
 		const list = lists[0]
 		const abstractFlag = abstractFlags[0]
+		const masked = Boolean(maskedFlags.find((prop) => prop))
 
 		// if the type is a scalar just add the first one and move on
 		if (config.isSelectionScalar(typeProperty)) {
@@ -333,6 +351,7 @@ function mergeSelections(
 			const fieldObj = AST.objectExpression([
 				AST.objectProperty(AST.literal('type'), AST.stringLiteral(typeProperty)),
 				AST.objectProperty(AST.literal('keyRaw'), AST.stringLiteral(key)),
+				AST.objectProperty(AST.literal('masked'), AST.booleanLiteral(masked)),
 			])
 
 			// perform the merge

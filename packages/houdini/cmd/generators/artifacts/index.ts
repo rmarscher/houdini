@@ -205,25 +205,6 @@ export default async function artifactGenerator(config: Config, docs: CollectedG
 					)
 				)
 
-				// if we are looking at a query, add the masked selection so it doesn't over subscribe
-				if (docKind === 'HoudiniQuery') {
-					artifact.properties.push(
-						AST.objectProperty(
-							AST.identifier('maskedSelection'),
-							selection({
-								config,
-								rootType,
-								selectionSet: selectionSet,
-								operations: operationsByPath(config, operations[0], filterTypes),
-								// do not include used fragments if we are rendering the selection
-								// for a fragment document
-								includeFragments: false,
-								document,
-							})
-						)
-					)
-				}
-
 				// if there are inputs to the operation
 				const inputs = operations[0]?.variableDefinitions
 				// add the input type definition to the artifact

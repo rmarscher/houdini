@@ -69,17 +69,17 @@ test('pass argument values to generated fragments', async function () {
 		        "users": {
 		            "type": "User",
 		            "keyRaw": "users(stringValue: \\"Hello\\")",
+		            "masked": false,
 
 		            "fields": {
 		                "id": {
 		                    "type": "ID",
-		                    "keyRaw": "id"
+		                    "keyRaw": "id",
+		                    "masked": true
 		                }
 		            }
 		        }
-		    },
-
-		    maskedSelection: {}
+		    }
 		};
 	`)
 })
@@ -143,17 +143,17 @@ test("fragment arguments with default values don't rename the fragment", async f
 		        "users": {
 		            "type": "User",
 		            "keyRaw": "users(stringValue: \\"Hello\\")",
+		            "masked": false,
 
 		            "fields": {
 		                "id": {
 		                    "type": "ID",
-		                    "keyRaw": "id"
+		                    "keyRaw": "id",
+		                    "masked": true
 		                }
 		            }
 		        }
-		    },
-
-		    maskedSelection: {}
+		    }
 		};
 	`)
 })
@@ -230,17 +230,17 @@ test('thread query variables to inner fragments', async function () {
 		        "users": {
 		            "type": "User",
 		            "keyRaw": "users(stringValue: $name)",
+		            "masked": false,
 
 		            "fields": {
 		                "id": {
 		                    "type": "ID",
-		                    "keyRaw": "id"
+		                    "keyRaw": "id",
+		                    "masked": true
 		                }
 		            }
 		        }
 		    },
-
-		    maskedSelection: {},
 
 		    input: {
 		        "fields": {
@@ -325,17 +325,17 @@ test('inner fragment with intermediate default value', async function () {
 		        "users": {
 		            "type": "User",
 		            "keyRaw": "users(stringValue: \\"Hello\\", intValue: 2)",
+		            "masked": false,
 
 		            "fields": {
 		                "id": {
 		                    "type": "ID",
-		                    "keyRaw": "id"
+		                    "keyRaw": "id",
+		                    "masked": true
 		                }
 		            }
 		        }
-		    },
-
-		    maskedSelection: {}
+		    }
 		};
 	`)
 })
@@ -412,17 +412,17 @@ test("default values don't overwrite unless explicitly passed", async function (
 		        "users": {
 		            "type": "User",
 		            "keyRaw": "users(stringValue: \\"Goodbye\\")",
+		            "masked": false,
 
 		            "fields": {
 		                "id": {
 		                    "type": "ID",
-		                    "keyRaw": "id"
+		                    "keyRaw": "id",
+		                    "masked": true
 		                }
 		            }
 		        }
-		    },
-
-		    maskedSelection: {}
+		    }
 		};
 	`)
 })
@@ -486,17 +486,17 @@ test('default arguments', async function () {
 		        "users": {
 		            "type": "User",
 		            "keyRaw": "users(boolValue: true, stringValue: \\"Hello\\")",
+		            "masked": false,
 
 		            "fields": {
 		                "id": {
 		                    "type": "ID",
-		                    "keyRaw": "id"
+		                    "keyRaw": "id",
+		                    "masked": true
 		                }
 		            }
 		        }
-		    },
-
-		    maskedSelection: {}
+		    }
 		};
 	`)
 })
@@ -560,17 +560,17 @@ test('multiple with directives - no overlap', async function () {
 		        "users": {
 		            "type": "User",
 		            "keyRaw": "users(boolValue: false, stringValue: \\"Goodbye\\")",
+		            "masked": false,
 
 		            "fields": {
 		                "id": {
 		                    "type": "ID",
-		                    "keyRaw": "id"
+		                    "keyRaw": "id",
+		                    "masked": true
 		                }
 		            }
 		        }
-		    },
-
-		    maskedSelection: {}
+		    }
 		};
 	`)
 })
