@@ -1,6 +1,6 @@
 {
 	"name": "houdini",
-	"version": "0.14.5",
+	"version": "0.15.0",
 	"description": "The disappearing graphql client for SvelteKit",
 	"workspaces": [
 		"example",
@@ -45,7 +45,7 @@
 		"@babel/preset-env": "^7.12.11",
 		"@babel/preset-typescript": "^7.16.7",
 		"@changesets/changelog-github": "^0.4.4",
-		"@rollup/plugin-commonjs": "beta",
+		"@rollup/plugin-commonjs": "v22.0.0",
 		"@rollup/plugin-json": "^4.1.0",
 		"@rollup/plugin-node-resolve": "^13.2.0",
 		"@types/fs-extra": "^9.0.13",
@@ -66,7 +66,7 @@
 		"pretty-quick": "^3.1.1",
 		"rollup": "2.68.0",
 		"rollup-plugin-typescript2": "^0.31.2",
-		"ts-ast-serializer": "^1.0.1",
+		"ts-ast-serializer": "rmarscher/ts-ast-serializer#v1.1.0",
 		"ts-jest": "^26.0.0",
 		"ts-node": "^9.1.1",
 		"typescript": "^4.6.3"
