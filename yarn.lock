@@ -2322,9 +2322,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-commonjs@npm:beta":
-  version: 22.0.0-14
-  resolution: "@rollup/plugin-commonjs@npm:22.0.0-14"
+"@rollup/plugin-commonjs@npm:v22.0.0":
+  version: 22.0.0
+  resolution: "@rollup/plugin-commonjs@npm:22.0.0"
   dependencies:
     "@rollup/pluginutils": ^3.1.0
     commondir: ^1.0.1
@@ -2335,7 +2335,7 @@ __metadata:
     resolve: ^1.17.0
   peerDependencies:
     rollup: ^2.68.0
-  checksum: 3e4d76108e2e5366bc537d46384f8bb6ae96fb5c42c1c7ad677d77a6ae5f301c0d6841181e414f3724bb9e730986b22c91015ea3814942b4d06be22380972f79
+  checksum: fdcce2bf58875fde0e06f001544c0d9a0509a12929393862f72dcef8fcbf4d5d0ba0d5db6cf10ba4351335caf67a3dbdb95000678c468585e3972994f92e2ce9
   languageName: node
   linkType: hard
 
@@ -2781,6 +2781,16 @@ __metadata:
     "@types/node": "*"
     form-data: ^3.0.0
   checksum: 504d3834083fcbb90dc488618a60d078ff3b018c3c77e649b4990aff6dfafe9e41c82699ed474e01d9df40448240b6b455653d25afeecbc0eacb4154a217c253
+  languageName: node
+  linkType: hard
+
+"@types/node-fetch@npm:^2.6.1":
+  version: 2.6.1
+  resolution: "@types/node-fetch@npm:2.6.1"
+  dependencies:
+    "@types/node": "*"
+    form-data: ^3.0.0
+  checksum: a3e5d7f413d1638d795dff03f7b142b1b0e0c109ed210479000ce7b3ea11f9a6d89d9a024c96578d9249570c5fe5287a5f0f4aaba98199222230196ff2d6b283
   languageName: node
   linkType: hard
 
@@ -6305,7 +6315,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"houdini@^0.14.0, houdini@workspace:.":
+"houdini@npm:^0.14.0":
+  version: 0.14.5
+  resolution: "houdini@npm:0.14.5"
+  dependencies:
+    "@babel/parser": ^7.13.4
+    "@changesets/changelog-git": ^0.1.11
+    "@changesets/cli": ^2.22.0
+    "@graphql-tools/schema": ^8.3.7
+    "@types/mock-fs": ^4.13.0
+    babylon: ^7.0.0-beta.47
+    commander: ^7.1.0
+    estree-walker: ^2.0.2
+    glob: ^8.0.1
+    global: ^4.4.0
+    graphql: ^15.5.0
+    inquirer: ^8.2.2
+    mkdirp: ^1.0.4
+    node-fetch: ^2.6.1
+    recast: ^0.20.4
+    remove: ^0.1.5
+    svelte: ^3.47.0
+  bin:
+    houdini: build/cmd.js
+  checksum: 48c0fa74c3a3ae53d520ecc06e91e0c7d3531d5ea0f314c76cd2e3ee559d27f63dc2ec77fdb95a224b9b5ea923b7c88a0aa9bc84002b0e55737739b8560eddf6
+  languageName: node
+  linkType: hard
+
+"houdini@workspace:.":
   version: 0.0.0-use.local
   resolution: "houdini@workspace:."
   dependencies:
@@ -6317,7 +6354,7 @@ __metadata:
     "@changesets/changelog-github": ^0.4.4
     "@changesets/cli": ^2.22.0
     "@graphql-tools/schema": ^8.3.7
-    "@rollup/plugin-commonjs": beta
+    "@rollup/plugin-commonjs": v22.0.0
     "@rollup/plugin-json": ^4.1.0
     "@rollup/plugin-node-resolve": ^13.2.0
     "@types/fs-extra": ^9.0.13
@@ -6325,6 +6362,7 @@ __metadata:
     "@types/inquirer": ^7.3.1
     "@types/jest": ^26.0.23
     "@types/mock-fs": ^4.13.0
+    "@types/node-fetch": ^2.6.1
     babel-jest: ^26.6.3
     babel-plugin-transform-import-meta: ^2.1.1
     babylon: ^7.0.0-beta.47
@@ -6351,7 +6389,7 @@ __metadata:
     rollup: 2.68.0
     rollup-plugin-typescript2: ^0.31.2
     svelte: ^3.47.0
-    ts-ast-serializer: ^1.0.1
+    ts-ast-serializer: "rmarscher/ts-ast-serializer#v1.1.0"
     ts-jest: ^26.0.0
     ts-node: ^9.1.1
     typescript: ^4.6.3
@@ -11513,12 +11551,12 @@ resolve@^1.19.0:
   languageName: node
   linkType: hard
 
-"ts-ast-serializer@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "ts-ast-serializer@npm:1.0.1"
+"ts-ast-serializer@rmarscher/ts-ast-serializer#v1.1.0":
+  version: 1.1.0
+  resolution: "ts-ast-serializer@https://github.com/rmarscher/ts-ast-serializer.git#commit=56a13a726234124278b7c37d6201e7a02992d6a3"
   peerDependencies:
-    typescript: ^3.0.0
-  checksum: 0cd971b41c0b7c264bc09dc2f5095b1e0d6373ccd6c3c05b16d3301345d943b0fdf332253c31ff46694ea192c4a5317d3f754f5d600e5a261a7c0076b074b145
+    typescript: ">=3.0.0"
+  checksum: 12785ac88472b9dd7679b15b8b4ffbee82b29e5367d4d9cef91f1d57f31d4810a2780277cd48d1499f29e8da3ef96ef85e4b6550c0ff672c7af8c0da04ea54cd
   languageName: node
   linkType: hard
 
