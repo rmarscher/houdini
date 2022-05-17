@@ -191,9 +191,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-create-class-features-plugin@npm:^7.16.7":
-  version: 7.17.9
-  resolution: "@babel/helper-create-class-features-plugin@npm:7.17.9"
+"@babel/helper-create-class-features-plugin@npm:^7.17.12":
+  version: 7.17.12
+  resolution: "@babel/helper-create-class-features-plugin@npm:7.17.12"
   dependencies:
     "@babel/helper-annotate-as-pure": ^7.16.7
     "@babel/helper-environment-visitor": ^7.16.7
@@ -204,7 +204,7 @@ __metadata:
     "@babel/helper-split-export-declaration": ^7.16.7
   peerDependencies:
     "@babel/core": ^7.0.0
-  checksum: db7be8852096084883dbbd096f925976695e5b34919a888fded9fd359d75d9994960e459f4eeb51ff6700109f83be6c1359e57809deb3fe36fc589b2a208b6d7
+  checksum: e10c076cdbcabd63893c2b6cdfcf60538563e6a4065ed21fd09bace04064d2eb126db2b417a8697adfb108dc153308e969ee54bc4a247b47fa4430ed7fd23486
   languageName: node
   linkType: hard
 
@@ -355,10 +355,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-plugin-utils@npm:^7.16.7":
-  version: 7.16.7
-  resolution: "@babel/helper-plugin-utils@npm:7.16.7"
-  checksum: d08dd86554a186c2538547cd537552e4029f704994a9201d41d82015c10ed7f58f9036e8d1527c3760f042409163269d308b0b3706589039c5f1884619c6d4ce
+"@babel/helper-plugin-utils@npm:^7.17.12":
+  version: 7.17.12
+  resolution: "@babel/helper-plugin-utils@npm:7.17.12"
+  checksum: 4813cf0ddb0f143de032cb88d4207024a2334951db330f8216d6fa253ea320c02c9b2667429ef1a34b5e95d4cfbd085f6cb72d418999751c31d0baf2422cc61d
   languageName: node
   linkType: hard
 
@@ -531,6 +531,15 @@ __metadata:
   bin:
     parser: ./bin/babel-parser.js
   checksum: ea59c985ebfae7c0299c8ea63ed34903202f51665db8d59c55b4366e20270b74d7367a2c211fdd2db20f25750df89adcc85ab6c8692061c6459a88efb79f43e6
+  languageName: node
+  linkType: hard
+
+"@babel/parser@npm:^7.17.2":
+  version: 7.17.12
+  resolution: "@babel/parser@npm:7.17.12"
+  bin:
+    parser: ./bin/babel-parser.js
+  checksum: 5c6f498040b2941fabdf2158683c482c8336af2d7d4c5be95ac9648993a1e03a22c4d18566897d4009e4ce5756a03f144bb37f8ceac176cc5bba99f4eb8ca33e
   languageName: node
   linkType: hard
 
@@ -847,14 +856,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-syntax-typescript@npm:^7.16.7":
-  version: 7.16.7
-  resolution: "@babel/plugin-syntax-typescript@npm:7.16.7"
+"@babel/plugin-syntax-typescript@npm:^7.17.12":
+  version: 7.17.12
+  resolution: "@babel/plugin-syntax-typescript@npm:7.17.12"
   dependencies:
-    "@babel/helper-plugin-utils": ^7.16.7
+    "@babel/helper-plugin-utils": ^7.17.12
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: 661e636060609ede9a402e22603b01784c21fabb0a637e65f561c8159351fe0130bbc11fdefe31902107885e3332fc34d95eb652ac61d3f61f2d61f5da20609e
+  checksum: 50ab09f1953a2b0586cff9e29bf7cea3d886b48c1361a861687c2aef46356c6d73778c3341b0c051dc82a34417f19e9d759ae918353c5a98d25e85f2f6d24181
   languageName: node
   linkType: hard
 
@@ -1211,16 +1220,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-typescript@npm:^7.16.7":
-  version: 7.16.8
-  resolution: "@babel/plugin-transform-typescript@npm:7.16.8"
+"@babel/plugin-transform-typescript@npm:^7.17.12":
+  version: 7.17.12
+  resolution: "@babel/plugin-transform-typescript@npm:7.17.12"
   dependencies:
-    "@babel/helper-create-class-features-plugin": ^7.16.7
-    "@babel/helper-plugin-utils": ^7.16.7
-    "@babel/plugin-syntax-typescript": ^7.16.7
+    "@babel/helper-create-class-features-plugin": ^7.17.12
+    "@babel/helper-plugin-utils": ^7.17.12
+    "@babel/plugin-syntax-typescript": ^7.17.12
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: a76d0afcbd550208cf2e7cdedb4f2d3ca3fa287640a4858a5ee0a28270b784d7d20d5a51b5997dc84514e066a5ebef9e0a0f74ed9fffae09e73984786dd08036
+  checksum: 023d831fe5e87abe8781951bc5f303ccae7cbb9e25a2cba51187cfa50bf23443552715b73e605b2fade086bcf4c5a9affbc34db7e677c7f00d8470dffb17f866
   languageName: node
   linkType: hard
 
@@ -1338,16 +1347,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/preset-typescript@npm:^7.16.7":
-  version: 7.16.7
-  resolution: "@babel/preset-typescript@npm:7.16.7"
+"@babel/preset-typescript@npm:^7.17.12":
+  version: 7.17.12
+  resolution: "@babel/preset-typescript@npm:7.17.12"
   dependencies:
-    "@babel/helper-plugin-utils": ^7.16.7
+    "@babel/helper-plugin-utils": ^7.17.12
     "@babel/helper-validator-option": ^7.16.7
-    "@babel/plugin-transform-typescript": ^7.16.7
+    "@babel/plugin-transform-typescript": ^7.17.12
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: 44e2f3fa302befe0dc50a01b79e5aa8c27a9c7047c46df665beae97201173030646ddf7c83d7d3ed3724fc38151745b11693e7b4502c81c4cd67781ff5677da5
+  checksum: f4ee9eeb0ef631a47d1c9bd7f6e365ae0bacefa3f47c702b03c51652ea764c267b26fdcf2814718b26c73accdd0fff7fcec1bb2d00625a967ecd7dac2f5fdce1
   languageName: node
   linkType: hard
 
@@ -6347,9 +6356,9 @@ __metadata:
   resolution: "houdini@workspace:."
   dependencies:
     "@babel/core": ^7.12.10
-    "@babel/parser": ^7.13.4
+    "@babel/parser": ^7.17.2
     "@babel/preset-env": ^7.12.11
-    "@babel/preset-typescript": ^7.16.7
+    "@babel/preset-typescript": ^7.17.12
     "@changesets/changelog-git": ^0.1.11
     "@changesets/changelog-github": ^0.4.4
     "@changesets/cli": ^2.22.0
@@ -6389,7 +6398,7 @@ __metadata:
     rollup: 2.68.0
     rollup-plugin-typescript2: ^0.31.2
     svelte: ^3.47.0
-    ts-ast-serializer: "rmarscher/ts-ast-serializer#v1.1.0"
+    ts-ast-serializer: "rmarscher/ts-ast-serializer#v1.1.0-alpha.0"
     ts-jest: ^26.0.0
     ts-node: ^9.1.1
     typescript: ^4.6.3
@@ -11551,12 +11560,12 @@ resolve@^1.19.0:
   languageName: node
   linkType: hard
 
-"ts-ast-serializer@rmarscher/ts-ast-serializer#v1.1.0":
-  version: 1.1.0
-  resolution: "ts-ast-serializer@https://github.com/rmarscher/ts-ast-serializer.git#commit=56a13a726234124278b7c37d6201e7a02992d6a3"
+"ts-ast-serializer@rmarscher/ts-ast-serializer#v1.1.0-alpha.0":
+  version: 1.1.0-alpha.0
+  resolution: "ts-ast-serializer@https://github.com/rmarscher/ts-ast-serializer.git#commit=815c1d1eff2476024af16b5ce5ab38c68c3ff715"
   peerDependencies:
     typescript: ">=3.0.0"
-  checksum: 12785ac88472b9dd7679b15b8b4ffbee82b29e5367d4d9cef91f1d57f31d4810a2780277cd48d1499f29e8da3ef96ef85e4b6550c0ff672c7af8c0da04ea54cd
+  checksum: 60d486d54bd75dd2d03dc4957e9bc2d28a9ea725432aa4d7e153759327e1cd1e13538a1bd65f790bc1bf6da094565c6a21b9ce1130a7c8d3f1534d688cfdbd72
   languageName: node
   linkType: hard
 
