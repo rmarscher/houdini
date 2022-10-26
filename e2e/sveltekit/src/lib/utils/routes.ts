@@ -30,6 +30,7 @@ export const routes = {
   Plugin_query_variable_error: '/plugin/query/variables-error',
   Plugin_query_multiple: '/plugin/query/multiple',
   Plugin_query_scalars: '/plugin/query/scalars',
+  Plugin_query_union: '/plugin/query/union',
   Plugin_query_component: '/plugin/query/component',
   Plugin_query_beforeLoad: '/plugin/query/beforeLoad',
   Plugin_query_afterLoad: '/plugin/query/afterLoad',

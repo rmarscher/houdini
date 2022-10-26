@@ -11,7 +11,7 @@ export const typeDefs = sourceFiles.map((filepath) =>
 )
 
 // example data
-const data = [
+const _data = [
 	{ id: '1', name: 'Bruce Willis', birthDate: new Date(1955, 2, 19) },
 	{ id: '2', name: 'Samuel Jackson', birthDate: new Date(1948, 11, 21) },
 	{ id: '3', name: 'Morgan Freeman', birthDate: new Date(1937, 5, 0) },
@@ -23,7 +23,7 @@ const data = [
 ]
 const snapshots = {}
 
-function getSnapshot(snapshot) {
+function getSnapshot(snapshot, data = _data) {
 	if (!snapshots[snapshot]) {
 		snapshots[snapshot] = data.map((user) => ({
 			...user,
@@ -34,6 +34,12 @@ function getSnapshot(snapshot) {
 
 	return snapshots[snapshot]
 }
+
+// example union data
+const unionData = [
+  { __typename: 'ModelA', id: 'm1', data: { x: 1, y: 2 } },
+  { __typename: 'ModelB', id: 'm2', data: { msg: "ok" } },
+]
 
 export const resolvers = {
 	Query: {
@@ -77,7 +83,10 @@ export const resolvers = {
 			}
 			return user
 		},
-		avgYearsBirthDate: () => {
+		modelsConnection(_, args) {
+			return connectionFromArray(getSnapshot(args.snapshot, unionData), args)
+		},
+    avgYearsBirthDate: () => {
 			return list.map((c) => c.birthDate.getFullYear()).reduce((a, b) => a + b) / list.length
 		},
 		node(_, { id: nodeID }) {
