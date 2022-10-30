@@ -241,32 +241,33 @@ export default async function typeCheck(
 				)
 
 				// make sure there is an id field
-				const missingIDFields = config
-					.keyFieldsForType(type.name)
-					.filter((fieldName) => !type.getFields()[fieldName])
+				// TODO handle union type - how to know if type is union?
+				// const missingIDFields = config
+				// 	.keyFieldsForType(type.name)
+				// 	.filter((fieldName) => !type.getFields()[fieldName])
 
-				if (missingIDFields.length > 0) {
-					if (error) {
-						errors.push(
-							new HoudiniError({
-								filepath: filename,
-								message: error,
-							})
-						)
-					} else {
-						errors.push(
-							new HoudiniError({
-								filepath: filename,
-								message: `@${
-									config.listDirective
-								} can only be applied to types with the necessary id fields: ${missingIDFields.join(
-									', '
-								)}.`,
-							})
-						)
-					}
-					return
-				}
+				// if (missingIDFields.length > 0) {
+				// 	if (error) {
+				// 		errors.push(
+				// 			new HoudiniError({
+				// 				filepath: filename,
+				// 				message: error,
+				// 			})
+				// 		)
+				// 	} else {
+				// 		errors.push(
+				// 			new HoudiniError({
+				// 				filepath: filename,
+				// 				message: `@${
+				// 					config.listDirective
+				// 				} can only be applied to types with the necessary id fields: ${missingIDFields.join(
+				// 					', '
+				// 				)}.`,
+				// 			})
+				// 		)
+				// 	}
+				// 	return
+				// }
 
 				// add the list to the list
 				lists.push(listName)
@@ -797,13 +798,14 @@ function paginateArgs(config: Config, filepath: string) {
 						)
 					}
 
-					if (forward && backwards) {
-						ctx.reportError(
-							new graphql.GraphQLError(
-								`A field with cursor pagination cannot go forwards an backwards simultaneously`
-							)
-						)
-					}
+					// Why? Shouldn't a person be able to navigate to the previous page?
+					// if (forward && backwards) {
+					// 	ctx.reportError(
+					// 		new graphql.GraphQLError(
+					// 			`A field with cursor pagination cannot go forwards an backwards simultaneously`
+					// 		)
+					// 	)
+					// }
 
 					return
 				}
